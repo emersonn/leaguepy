@@ -1,1 +1,1 @@
-from .client import League  # noqa
+from .riot import RiotSession  # noqa
