@@ -1,5 +1,5 @@
 # leaguepy
-League of Legends API wrapper. An easy, streamlined way to work with Riot's
+A League of Legends API wrapper. An easy, streamlined way to work with Riot's
 developer API.
 
 ## Installation
@@ -11,12 +11,14 @@ $ pip install .
 ```
 
 ## Basic Usage
-1. Create a RiotSession object with your API Key and (optional) desired location. The location is the key for locations specified in the Riot API. Example: "na" or "euw." Argument defaults to "na."
+1. Create a RiotSession object with your API Key and (optional) desired location.
+ The location is the key for locations specified in the Riot API.
+ Example: "na" or "euw." Argument defaults to "na."
 
   ```python
   import RiotSession from leaguepy
   SESSION = RiotSession(API_KEY)
-```
+ ```
 2. Call functions on the SESSION to pull data from Riot's servers.
 
 ## Built In Functions
