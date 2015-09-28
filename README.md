@@ -1,5 +1,5 @@
 # leaguepy
-Riot League of Legends API REST Client
+Riot League of Legends API REST Client.
 
 ## Installation
 With the setup.py installation is quite easy.
@@ -11,10 +11,10 @@ $ pip install .
 
 ## Basic Usage
 1. Create a RiotSession object with your API Key and (optional) desired location. The location is the key for locations specified in the Riot API. Example: "na" or "euw." Argument defaults to "na."
-```python
-import RiotSession from leaguepy
-SESSION = RiotSession(API_KEY)
-```
+  ```python
+  import RiotSession from leaguepy
+  SESSION = RiotSession(API_KEY)
+  ```
 2. Call functions on the SESSION to pull data from Riot's servers.
 
 ## Built In Functions
