@@ -35,3 +35,8 @@ $ pip install .
 
 `get_champion(champion_id, champ_data="all")` grabs the static champion data
   relevant to the champion in question.
+
+## Testing
+Testing requires mock, nose and (optional) coverage libraries. Setup.cfg should
+allow you to use nosetests right away and ensure leaguepy works in your
+environment.
