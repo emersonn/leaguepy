@@ -1,7 +1,7 @@
 import mock
 # from nose.tools import set_trace
 
-from riot import RiotSession, URLS
+from leaguepy import RiotSession, URLS
 
 
 class TestRiotSession(object):

@@ -19,6 +19,7 @@ setup(
     extras_require={
         'test': [
             'mock',
+            'nose'
         ]
     }
 )

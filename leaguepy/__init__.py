@@ -1,1 +1,1 @@
-from .riot import RiotSession  # noqa
+from .riot import RiotSession, URLS  # noqa
