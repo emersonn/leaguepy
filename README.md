@@ -1,5 +1,6 @@
 # leaguepy
-Riot League of Legends API REST Client.
+League of Legends API wrapper. An easy, streamlined way to work with Riot's
+developer API.
 
 ## Installation
 With the setup.py installation is quite easy.
