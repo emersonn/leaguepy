@@ -33,11 +33,13 @@ URLS = {
     'match_list': BASE_API_URL + 'v2.2/matchlist/by-summoner/{player}/'
 }
 
-# TODO: Try abstracting with json.loads in object_hook to make consistent
-# TODO: Add error checking, error codes, etc. r.status_code = 429
-# TODO: Rate limiting throw errors.
-# TODO: Streamline the .get() and .format() and add unit tests for
-#       the requested URL.
+# TODO(Try abstracting with json.loads in object_hook to make consistent.)
+
+# TODO(Add error checking, error codes, etc. r.status_code = 429.)
+#   Rate limiting throw errors.
+#   Handle similarly to Tweepy.
+
+# TODO(Streamline the .get() and .format() and add unit tests for such.)
 
 
 class RiotSession(requests.Session):
@@ -47,7 +49,7 @@ class RiotSession(requests.Session):
         self.location = location
 
     def _get_request(self, connection, formats={}, parameters={}):
-        """ Builds a get request with the given API request
+        """Builds a get request with the given API request
 
         Args:
             connection: Desired URL key in the URLS list.
@@ -71,7 +73,7 @@ class RiotSession(requests.Session):
         ).json()
 
     def get_featured(self):
-        """ Performs a request to get the featured games from Riot.
+        """Performs a request to get the featured games from Riot.
 
         Returns:
             list: List of featured games. If there are no games in the list,
@@ -98,7 +100,7 @@ class RiotSession(requests.Session):
             return []
 
     def get_match(self, match):
-        """ Performs a request to get match data from Riot.
+        """Performs a request to get match data from Riot.
 
         Returns:
             json: JSON loaded data in dictionary format.
@@ -109,10 +111,9 @@ class RiotSession(requests.Session):
             {'match': str(match)}
         )
 
-    # TODO: UnicodeEncodeError: 'ascii' codec can't encode character u'\xfc'
-    #       in position 218: ordinal not in range(128)
+    # TODO(Unicode encode error.)
     def get_ids(self, players):
-        """ Performs a request to get the ID lists from a list of usernames.
+        """Performs a request to get the ID lists from a list of usernames.
 
         Args:
             players (list): List of players to perform the lookup on.
@@ -127,7 +128,7 @@ class RiotSession(requests.Session):
         )
 
     def get_stats(self, player):
-        """ Performs a request to get the stats of a particular player.
+        """Performs a request to get the stats of a particular player.
 
         Args:
             player: Player ID.
@@ -143,7 +144,7 @@ class RiotSession(requests.Session):
         )
 
     def get_match_list(self, player, match_type='RANKED_SOLO_5x5'):
-        """ Performs a request to get the match list of a player.
+        """Performs a request to get the match list of a player.
 
         Args:
             player: ID of the player.
@@ -165,7 +166,7 @@ class RiotSession(requests.Session):
             return []
 
     def get_champion(self, champion_id, champ_data="all"):
-        """ Performs a request to get static champion data.
+        """Performs a request to get static champion data.
 
         Args:
             champion_id: Champion ID.
