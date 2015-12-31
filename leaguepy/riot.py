@@ -11,6 +11,7 @@ Testing Tips:
 """
 
 import requests
+import warnings
 
 BASE_URL = "https://{location}.api.pvp.net/"
 
@@ -44,12 +45,13 @@ URLS = {
 
 class RiotSession(requests.Session):
     def __init__(self, api, location="na"):
-        super(RiotSession, self).__init__()
         self.params.update({'api_key': api})
         self.location = location
 
+        super(RiotSession, self).__init__()
+
     def _get_request(self, connection, formats={}, parameters={}):
-        """Builds a get request with the given API request
+        """Builds a request with the given URL key.
 
         Args:
             connection: Desired URL key in the URLS list.
@@ -73,7 +75,7 @@ class RiotSession(requests.Session):
         ).json()
 
     def get_featured(self):
-        """Performs a request to get the featured games from Riot.
+        """Gets the featured games.
 
         Returns:
             list: List of featured games. If there are no games in the list,
@@ -86,7 +88,8 @@ class RiotSession(requests.Session):
             return []
 
     def get_matches(self, player, matches=5, match_type='RANKED_SOLO_5x5'):
-        import warnings
+        """SOON TO BE REMOVED."""
+
         warnings.warn("Riot will be depricating this URL.")
 
         try:
@@ -100,10 +103,13 @@ class RiotSession(requests.Session):
             return []
 
     def get_match(self, match):
-        """Performs a request to get match data from Riot.
+        """Gets a particular match's data.
+
+        Args:
+            match (int): Match ID for the particular match.
 
         Returns:
-            json: JSON loaded data in dictionary format.
+            json: Match data.
         """
 
         return self._get_request(
@@ -113,13 +119,13 @@ class RiotSession(requests.Session):
 
     # TODO(Unicode encode error.)
     def get_ids(self, players):
-        """Performs a request to get the ID lists from a list of usernames.
+        """Gets the IDs from the list of usernames given.
 
         Args:
             players (list): List of players to perform the lookup on.
 
         Returns:
-            json: JSON loaded data in dictionary format.
+            json: List of player IDs.
         """
 
         return self._get_request(
@@ -128,14 +134,13 @@ class RiotSession(requests.Session):
         )
 
     def get_stats(self, player):
-        """Performs a request to get the stats of a particular player.
+        """Gets the ranked stats of a particular player.
 
         Args:
             player: Player ID.
 
         Returns:
-            json: JSON loaded data of the player champion statistics
-                in dictionary format.
+            json: Player champion statistics.
         """
 
         return self._get_request(
@@ -144,12 +149,12 @@ class RiotSession(requests.Session):
         )
 
     def get_match_list(self, player, match_type='RANKED_SOLO_5x5'):
-        """Performs a request to get the match list of a player.
+        """Gets the match list of a player.
 
         Args:
             player: ID of the player.
-            match_type: Riot specified argument of the match types to look up.
-                Defaults to Ranked Solo matches.
+            match_type: Match types to filter by.
+                Defaults to Ranked 5v5 Solo matches.
 
         Returns:
             list: List of match data.
@@ -166,7 +171,7 @@ class RiotSession(requests.Session):
             return []
 
     def get_champion(self, champion_id, champ_data="all"):
-        """Performs a request to get static champion data.
+        """Gets static champion data.
 
         Args:
             champion_id: Champion ID.
@@ -174,7 +179,7 @@ class RiotSession(requests.Session):
                 Defaults to ALL champion data returned.
 
         Returns:
-            json: JSON formatted data in dictionary format.
+            json: Champion data.
         """
 
         parameters = {'champData': champ_data}
