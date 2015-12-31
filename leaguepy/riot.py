@@ -3,12 +3,12 @@ Riot API Connection Manager
 Emerson Matson
 
 Used for all requests to the Riot API, including grabbing player data,
-    creating a session with the riot server
-"""
+    creating a session with the Riot server.
 
-# Temporary tips:
-# My ID: 27284
-# Random match: 1932421719
+Testing Tips:
+    My Player ID: 27284
+    Random match: 1932421719
+"""
 
 import requests
 
@@ -16,14 +16,18 @@ BASE_URL = "https://{location}.api.pvp.net/"
 
 # https://{location}.api.pvp.net/api/lol/{location}/
 BASE_API_URL = BASE_URL + "api/lol/{location}/"
+
 # https://{location}.api.pvp.net/api/lol/static-data/{location}/
 BASE_STATIC_URL = BASE_URL + "api/lol/static-data/{location}/"
 
 URLS = {
     'ids': BASE_API_URL + 'v1.4/summoner/by-name/{players}',
+
     'stats': BASE_API_URL + 'v1.3/stats/by-summoner/{player}/ranked/',
     'champion': BASE_STATIC_URL + 'v1.2/champion/{champion}/',
-    'featured': 'https://{location}.api.pvp.net/observer-mode/rest/featured/',
+
+    'featured': BASE_URL + 'observer-mode/rest/featured/',
+
     'matches': BASE_API_URL + 'v2.2/matchhistory/{player}/',
     'match': BASE_API_URL + 'v2.2/match/{match}/',
     'match_list': BASE_API_URL + 'v2.2/matchlist/by-summoner/{player}/'
