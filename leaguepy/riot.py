@@ -45,10 +45,10 @@ URLS = {
 
 class RiotSession(requests.Session):
     def __init__(self, api, location="na"):
+        super(RiotSession, self).__init__()
+
         self.params.update({'api_key': api})
         self.location = location
-
-        super(RiotSession, self).__init__()
 
     def _get_request(self, connection, formats={}, parameters={}):
         """Builds a request with the given URL key.
